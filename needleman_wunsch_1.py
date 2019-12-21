@@ -48,27 +48,18 @@ class Ruler():
         i = self.length - 1
         j = self.width - 1
         while (i > 0 and j > 0):
-            print(i, j, res_upper, res_lower)
+            # print(i, j, res_upper, res_lower)
             if self.upper[i] == self.lower[j]:
                 val = self.match_score
                 self.distance -= 1
             else:
                 val = self.dismatch_score
-            # if (self.coef_mat[i][j] ==
-            #         self.coef_mat[i-1][j-1] + self.match_score):
             if (self.coef_mat[i][j] ==
                     self.coef_mat[i-1][j-1] + val):
                 res_upper = self.upper[i] + res_upper
                 res_lower = self.lower[j] + res_lower
                 i -= 1
                 j -= 1
-                # self.distance -= 1
-            # elif (self.coef_mat[i][j] ==
-            #         self.coef_mat[i-1][j-1] + self.dismatch_score):
-            #     res_upper = self.upper[i] + res_upper
-            #     res_lower = self.lower[j] + res_lower
-            #     i -= 1
-            #     j -= 1
             elif (self.coef_mat[i][j] ==
                     self.coef_mat[i-1][j] + self.gap_score):
                 res_upper = self.upper[i] + res_upper
@@ -82,25 +73,31 @@ class Ruler():
             else:
                 raise ValueError
             self.distance += 1
-        print("Rebuild finished. ")
-        print(res_upper)
-        print(res_lower)
+        # print("Rebuild finished. ")
+        # print(res_upper)
+        # print(res_lower)
         self.res_up, self.res_low = res_upper, res_lower
 
     def compute(self):
         self.build_matrix()
         self.rebuild()
 
+    def report(self):
+        return self.res_up, self.res_low
+
 
 str1 = "GGATCGA"
 str2 = "GAATTCAGTTA"
-# str1 = "GATTACA"
-# str2 = "GCATGCU"
+str1 = "abcdefghi"
+str2 = "abcdfghi"
 ruler = Ruler(str1, str2)
 ruler.compute()
-print(ruler.length, ruler.width)
-print(ruler.coef_mat)
+# print(ruler.length, ruler.width)
+# print(ruler.coef_mat)
 print(ruler.distance)
+top, bottom = ruler.report()
+print(top)
+print(bottom)
 
 message = "def"
 print(f"abc{red_text(message)}ghi")
