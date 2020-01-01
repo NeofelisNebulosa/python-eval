@@ -17,7 +17,7 @@ class Ruler():
     length = 0
     width = 0
     coef_mat = np.zeros([0, 0])
-    distance = 0
+    distance = "Available only after the compute operation. "
     res_up = ""
     res_low = ""
 
@@ -85,6 +85,7 @@ class Ruler():
         self.res_up, self.res_low = res_upper, res_lower
 
     def compute(self):
+        self.distance = 0
         self.build_matrix()
         self.rebuild()
 

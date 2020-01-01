@@ -1,3 +1,5 @@
+﻿
+
 abcdefghi
 abcdfghi
 
@@ -6,3 +8,34 @@ abcdfg
 
 ACGT
 ACCT
+
+abcdefghi
+abcdfghi
+
+abcdefg
+abcdfgh
+
+
+as de ♤
+as de ♡
+
+
+
+
+ACGT
+ACCT
+
+
+ACGTAGC
+ACTGTAGC
+
+ACTGCCAAC
+ACCGCAAC
+
+ACTGCCAACAGTC
+ACCTGCGAACAGC
+
+Le barême pour ce devoir est délibérément conçu pour vous inciter à faire très attention à la forme autant qu'au fond; ainsi les points obtenus se répartissent de la façon suivante :50% seulement de la note sur le fait que "ça marche", c'est-à-dire que les résultats obtenus correspondent bien à ce qui est demandé ;20% de la note sur la lisibilité du code; vous êtes notamment invités àsuivre les recommandations de la PEP008 (cf. le cours sur nbhosting) notamment en ce qui concerne la place des espaces, et la largeur des pages (ne pas dépasser 100 caractères de large)écrire des doctrings pour les classes et méthodes importantes ;insérer ni trop, ni trop peu de commentaires ;utiliser les type hints pour préciser le type des arguments lorsque vous pensez que ça peut clarifier l'usage du code que vous écrivez ;20% de la note pour la simplicité et la concision du code : plus votre code est simple et concis, plus il est facile à lire et à comprendre, et plus il sera facilement modifiable dans le futur ; n'hésitez pL
+Le pour ce devoir barême est ou à récrire un morcdélibérément eau qui utilise une approcconçu pour vous inciter à faireainsi  très à la forme autaattention nt qu'au fond; les points obtenus se répartissent de la façon suivante :50% seulec'est-ment de la not"ça e sur le fait que marche", à-dire que les résultats obtenus correspondent bien à ce qui est demandé ;20% de la note sur la lisibilité du code; vous êtes notamment invités àsuivre les recommandations de la PEP008 (cf. le cours sur nbhosting) notamment en ce qui concerne la place des espaces, et la largeur des pages (ne pas dépasser 100 caractères de large)écrire des doctrings pour les classes et méthodes importantes ;insérer ni trop, ni trop peu de commentaires ;utiliser les type hints pour préciser le type des arguments lorsque vous pensez que ça peut clarifier l'usage du code que vous écrivez ;20% de la note pour la simplicité et la concision du code : plus votre code est simple et concis, plus il est facile à lire et à comprendre, et plus il sera facL
+
+fin
