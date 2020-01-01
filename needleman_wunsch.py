@@ -44,6 +44,7 @@ class Ruler():
                     ])
 
     def rebuild(self):
+        init()  # initialize colorama package
         res_upper = ""
         res_lower = ""
         i = self.length - 1
@@ -85,18 +86,3 @@ class Ruler():
 
     def report(self):
         return self.res_up, self.res_low
-
-
-init()  # initialize colorama package
-str1 = "GGATCGA"
-str2 = "GAATTCAGTTA"
-# str1 = "abcdeddddfghi"
-# str2 = "abcdfghi"
-ruler = Ruler(str1, str2)
-ruler.compute()
-# print(ruler.length, ruler.width)
-# print(ruler.coef_mat)
-print(ruler.distance)
-top, bottom = ruler.report()
-print(top)
-print(bottom)
