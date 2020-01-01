@@ -4,7 +4,6 @@ from colorama import Fore, Style, init
 
 def red_text(text):
     return f"{Fore.RED}{text}{Style.RESET_ALL}"
-    # return Fore.RED + text + Style.RESET_ALL
 
 
 class Ruler():
@@ -18,8 +17,8 @@ class Ruler():
     width = 0
     coef_mat = np.zeros([0, 0])
     distance = "Available only after the compute operation. "
-    res_up = ""
-    res_low = ""
+    res_up = "Available only after the compute operation. "
+    res_low = "Available only after the compute operation. "
 
     def __init__(self, upper: str, lower: str):
         self.upper = '-' + upper
