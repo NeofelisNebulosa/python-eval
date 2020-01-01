@@ -58,19 +58,23 @@ class Ruler():
                 val = self.dismatch_score
             if (self.coef_mat[i][j] ==
                     self.coef_mat[i-1][j-1] + val):
-                res_upper = self.upper[i] + res_upper
-                res_lower = self.lower[j] + res_lower
+                if self.upper[i] == self.lower[j]:
+                    res_upper = self.upper[i] + res_upper
+                    res_lower = self.lower[j] + res_lower
+                else:
+                    res_upper = red_text(self.upper[i]) + res_upper
+                    res_lower = red_text(self.lower[j]) + res_lower
                 i -= 1
                 j -= 1
             elif (self.coef_mat[i][j] ==
                     self.coef_mat[i-1][j] + self.gap_score):
-                res_upper = red_text(self.upper[i]) + res_upper
+                res_upper = self.upper[i] + res_upper
                 res_lower = red_text("=") + res_lower
                 i -= 1
             elif (self.coef_mat[i][j] ==
                     self.coef_mat[i][j-1] + self.gap_score):
                 res_upper = red_text("=") + res_upper
-                res_lower = red_text(self.lower[j]) + res_lower
+                res_lower = self.lower[j] + res_lower
                 j -= 1
             else:
                 raise ValueError
