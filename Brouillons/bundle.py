@@ -2,25 +2,40 @@ import numpy as np
 from needleman_wunsch import Ruler
 import sys
 
-print(sys.argv)
 
-with open(f"{sys.argv[1]}" + ".txt", "r") as f:
+try:
+    filename = f"{sys.argv[1]}" + ".txt"
+    f = open(filename, "r")  # Defaut file type is .txt
+except FileNotFoundError:
+    print("File not found or it is not a .txt file. ")
+    new_filename = input("Please type in the complete filename: ")
+    f = open(new_filename, "r")
+finally:
+    # Input data
     data = f.read().splitlines()
-    print(data)
+    data_length = len(data)
+    # Content test
+    if data_length < 1:
+        raise Warning("Empty file. ")
+    # Start of loop
     i = 0
-    j = 1
+    exp_count = 1
     while i < len(data):
+        # Skip all empty lines
         while len(data[i]) == 0:
             i += 1
-        str1 = data[i]
+        # Ignore last single line
         if i == len(data)-1:
             break
+        # Calculation
+        str1 = data[i]
         str2 = data[i+1]
         ruler = Ruler(str1, str2)
         ruler.compute()
         top, bottom = ruler.report()
-        print(f"====== example # {j} - distance = {ruler.distance}")
+        print(f"====== example # {exp_count} - distance = {ruler.distance}")
         print(top)
         print(bottom)
         i += 2
-        j += 1
+        exp_count += 1
+    f.close()
