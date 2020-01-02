@@ -36,10 +36,13 @@ class NodeQueue():
 
     def add_nd(self, node):
         if self.size > 0:
-            i = 0
-            while(node.val > self.queue[i].val and i < self.size):
-                i += 1
-            self.queue = self.queue[:i] + [node] + self.queue[i:]
+            if node.val > self.queue[self.size-1].val:
+                self.queue = self.queue + [node]
+            else:
+                for i in range(self.size):
+                    if node.val <= self.queue[i].val:
+                        self.queue = self.queue[:i] + [node] + self.queue[i:]
+                        break
         else:
             self.queue = [node]
         self.size += 1
@@ -57,7 +60,6 @@ class TreeBuilder():
 
     def __init__(self, text: str):
         self.node_queue = NodeQueue(char_freq(text))
-        self.head = self.node_queue.queue[0]
 
     def tree(self):
         nq = self.node_queue
@@ -65,8 +67,15 @@ class TreeBuilder():
             raise ValueError("Empty queue of nodes. ")
         while nq.size > 1:
             node1 = nq.pop_nd()
-            # node2 = nq.pop_nd()
-            print(node1.key, node1.val)
+            node2 = nq.pop_nd()
+            r = Node((node1.key + node2.key, node1.val + node2.val))
+            r.left = node1
+            r.right = node2
+            nq.add_nd(r)
+            print("--------")
+            for x in nq.queue:
+                print((x.key, x.val))
+        return nq.pop_nd()
 
 
 class Codec():
@@ -75,10 +84,10 @@ class Codec():
     def __init__(self, tree):
         pass
 
-    def encode(self):
+    def encode(self, text):
         pass
 
-    def decode(self):
+    def decode(self, b_text):
         pass
 
 
@@ -93,4 +102,6 @@ class Codec():
 # print(nq.pop_nd().val)
 
 hfmt = TreeBuilder(text)
-hfmt.tree()
+t = hfmt.tree()
+print(t.val)
+codec = Codec(t)
