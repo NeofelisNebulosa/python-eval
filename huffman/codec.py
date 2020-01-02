@@ -87,8 +87,6 @@ class Codec():
         self.encoder = {}
         self.decoder = {}
         self.tree_complete(head, '')
-        print(self.encoder)
-        print(self.decoder)
 
     def encode(self, text):
         res = ""
