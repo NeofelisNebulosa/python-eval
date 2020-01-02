@@ -1,7 +1,3 @@
-import numpy as np
-
-text = "a dead dad ceded a bad babe a beaded abaca bed"
-
 
 def char_freq(text):
     dic = {}
@@ -72,36 +68,40 @@ class TreeBuilder():
             r.left = node1
             r.right = node2
             nq.add_nd(r)
-            print("--------")
-            for x in nq.queue:
-                print((x.key, x.val))
         return nq.pop_nd()
 
 
 class Codec():
     """Class used for encode and decode a Huffman tree. """
 
-    def __init__(self, tree):
-        pass
+    def tree_complete(self, head, code):
+        if head:
+            self.tree_complete(head.left, code + '0')
+            head.code += code
+            if len(head.key) == 1:
+                self.encoder[head.key] = head.code
+                self.decoder[head.code] = head.key
+            self.tree_complete(head.right, code + '1')
+
+    def __init__(self, head):
+        self.encoder = {}
+        self.decoder = {}
+        self.tree_complete(head, '')
+        print(self.encoder)
+        print(self.decoder)
 
     def encode(self, text):
-        pass
+        res = ""
+        for ch in text:
+            res += self.encoder[ch]
+        return res
 
     def decode(self, b_text):
-        pass
-
-
-# print(char_freq(text)[:])
-# nq = NodeQueue(char_freq(text))
-# nd = Node(('sd', 8))
-# for x in nq.queue:
-#     print(x.key, x.val)
-# nq.add_nd(nd)
-# for x in nq.queue:
-#     print(x.key, x.val)
-# print(nq.pop_nd().val)
-
-hfmt = TreeBuilder(text)
-t = hfmt.tree()
-print(t.val)
-codec = Codec(t)
+        res = ""
+        temp = ""
+        for ch in b_text:
+            temp += ch
+            if temp in self.decoder.keys():
+                res += self.decoder[temp]
+                temp = ""
+        return res
