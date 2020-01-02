@@ -49,17 +49,24 @@ class NodeQueue():
             self.size -= 1
             return self.queue.pop(0)
         else:
-            raise ValueError("Empty queue of nodes. ")
+            raise ValueError("Empty queue of nodes. Nothing to pop. ")
 
 
 class TreeBuilder():
     """Class used for Huffman binary tree constructions. """
 
     def __init__(self, text: str):
-        pass
+        self.node_queue = NodeQueue(char_freq(text))
+        self.head = self.node_queue.queue[0]
 
     def tree(self):
-        pass
+        nq = self.node_queue
+        if nq.size < 1:
+            raise ValueError("Empty queue of nodes. ")
+        while nq.size > 1:
+            node1 = nq.pop_nd()
+            # node2 = nq.pop_nd()
+            print(node1.key, node1.val)
 
 
 class Codec():
@@ -75,12 +82,15 @@ class Codec():
         pass
 
 
-print(char_freq(text)[:])
-nq = NodeQueue(char_freq(text))
-nd = Node(('sd', 8))
-for x in nq.queue:
-    print(x.key, x.val)
-nq.add_nd(nd)
-for x in nq.queue:
-    print(x.key, x.val)
-print(nq.pop_nd().val)
+# print(char_freq(text)[:])
+# nq = NodeQueue(char_freq(text))
+# nd = Node(('sd', 8))
+# for x in nq.queue:
+#     print(x.key, x.val)
+# nq.add_nd(nd)
+# for x in nq.queue:
+#     print(x.key, x.val)
+# print(nq.pop_nd().val)
+
+hfmt = TreeBuilder(text)
+hfmt.tree()
