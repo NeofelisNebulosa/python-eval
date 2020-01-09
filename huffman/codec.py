@@ -1,4 +1,3 @@
-
 def char_freq(text):
     dic = {}
     for ch in text:
