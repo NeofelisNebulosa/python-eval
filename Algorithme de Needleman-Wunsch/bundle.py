@@ -3,10 +3,12 @@ from needleman_wunsch import Ruler
 import sys  # Package needed for data input
 
 
+# Cet étape sert à ouvrir le ficher sous format TXT
 try:
     filename = f"{sys.argv[1]}" + ".txt"
     f = open(filename, "r")  # Defaut file type is .txt
 
+# En cas d'échec, on lance un demande de saisir
 except FileNotFoundError:
     print("File not found or it is not a .txt file. ")
     new_filename = input("Please type in the complete filename: ")
